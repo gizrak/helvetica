@@ -1,4 +1,4 @@
-package me.ted.code.helvetica.websocket;
+package me.ted.code.helvetica.configuration.interceptor;
 
 import java.util.Map;
 
