@@ -1,5 +1,7 @@
-package me.ted.code.helvetica.controller;
+package me.ted.code.helvetica.controller.websocket;
 
+import me.ted.code.helvetica.controller.websocket.dto.GreetingResponse;
+import me.ted.code.helvetica.controller.websocket.dto.HelloRequest;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -8,17 +10,14 @@ import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
-import me.ted.code.helvetica.controller.dto.Greeting;
-import me.ted.code.helvetica.controller.dto.HelloMessage;
-
 @Controller
-public class GreetingController {
+public class WebSocketController {
 
-    @MessageMapping("/hello")
+    @MessageMapping("/ws/hello")
     @SendTo("/topic/greetings")
-    public Greeting greeting(@Payload HelloMessage message) throws Exception {
+    public GreetingResponse greeting(@Payload HelloRequest message) throws Exception {
         Thread.sleep(100);
-        return Greeting.builder()
+        return GreetingResponse.builder()
                        .content("Hello, " + HtmlUtils.htmlEscape(message.getName()))
                        .build();
     }
