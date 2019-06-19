@@ -1,0 +1,29 @@
+server:
+  port: 9004
+  tomcat:
+    accesslog:
+      enabled: true
+
+---
+
+spring:
+  profiles: local
+
+test:
+  name: local-test
+
+---
+
+spring:
+  profiles: dev
+
+test:
+  name: dev-test
+
+---
+
+spring:
+  profiles: real
+
+test:
+  name: real-test
